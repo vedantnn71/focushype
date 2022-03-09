@@ -1,0 +1,42 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: $white-color;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: $box-shadow;
+
+  ul {
+    display: flex;
+    gap: 2rem;
+    flex-direction: row;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .follow {
+      gap: .5rem;
+    }
+  }
+  
+  .logo__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: $primary-color;
+    gap: 1rem;
+
+    .logo__text {
+      font-weight: bolder;
+    }
+
+    .img__container {
+      max-width: 4rem;
+    }
+  }
+}

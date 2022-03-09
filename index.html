@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles/main.scss" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <title>Focushype</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="logo__container">
+        <div class="img__container">
+          <img src="img/logo.svg" alt="Logo of Focushype" />
+        </div>
+        <h3 class="link logo__text">Focushype</h3>
+      </a>
+      <ul class="navlinks__container">
+        <li>
+          <a href="/settings" class="navlink">Settings</a>
+        </li>
+        <li>
+          <a
+            href="https://twitter.com/vedantnn7"
+            class="navlink button__primary follow"
+            target="_blank"
+            ><img src="img/twitter.svg" alt="twitter icon" class="icon" />
+            Twitter</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div class="buttons">
+      <button class="focus__mode button__light" id="toggle-focus">
+        <span class="material-icons"> bolt </span>
+        Focus Mode
+      </button>
+      <button class="button__primary" id="toggle-mode">
+        <span class="material-icons"> whatshot </span>
+        Work
+      </button>
+    </div>
+    <main>
+      <div id="pomodoro" data-is-running="false">
+        <h1>
+          <span id="time-minutes">25</span> : <span id="time-seconds">00</span>
+        </h1>
+      </div>
+      <div class="button__group">
+        <button
+          id="delete-pomodoro"
+          disabled
+          class="icon__button button__light"
+        >
+          <span class="material-icons"> delete </span>
+        </button>
+        <button id="toggle-pomodoro" class="button__primary">
+          <span class="material-icons"> play_arrow </span>
+          <span class="text">Start</span>
+        </button>
+        <button id="whitenoise-open" class="icon__button button__light">
+          <span class="material-icons"> music_note </span>
+        </button>
+      </div>
+    </main>
+
+    <div id="whitenoise">
+      <span class="material-icons button__light" id="whitenoise-close">
+        clear
+      </span>
+      <div class="whitenoise__main">
+        <div class="whitenoise__header">
+          <h1>White Noise</h1>
+        </div>
+        <ul class="whitenoise__select">
+          <li class="whitenoise__option" data-volume="20%">
+            <div class="option__image">
+              <img src="img/rain.svg" alt="rain icon" class="icon" />
+            </div>
+            <h2 class="heading__large">Rain</h2>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

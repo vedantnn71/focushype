@@ -1,0 +1,71 @@
+@mixin button($background: none, $color: $black-color) {
+  transition: 0.3s ease;
+  background: $background;
+  color: $color;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 8px;
+  padding: 0.8rem 2rem;
+
+  &:hover {
+    opacity: 80%;
+  }
+}
+
+button,
+.button {
+  @include button;
+}
+
+.button__primary {
+  @include button($primary-color, $light-color);
+}
+
+.button__secondary {
+  @include button($light-color, $primary-color);
+}
+
+.button__light {
+  @include button($white-color, $primary-color);
+}
+
+.button__group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.icon__button {
+  padding: 0.8rem;
+
+  .material-icons {
+    font-size: 1.5rem !important;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
+  gap: 1rem;
+  margin: 1rem;
+  float: right;
+  top: 0;
+
+  button {
+    gap: 4px;
+  }
+}
+
+.button__group {
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+button:disabled {
+  opacity: 70%;
+  cursor: not-allowed;
+}

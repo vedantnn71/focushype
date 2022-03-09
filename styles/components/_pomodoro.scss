@@ -1,0 +1,25 @@
+#pomodoro {
+  @include flex(center);
+  padding: 2rem;
+  background: $primary-color;
+  color: $white-color;
+  margin: 3.8rem auto;
+  width: 19rem;
+  height: 19rem;
+  border-radius: 50%;
+  border: 8px solid $white-color;
+  outline: solid $primary-color 16px;
+  box-shadow: $box-shadow;
+  justify-content: center;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bolder;
+  }
+}
+
+@media (min-width: 1024px) {
+  #pomodoro {
+    max-width: 20rem;
+  }  
+}
