@@ -1,0 +1,13 @@
+#break {
+  .popup__content {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 1.5rem;
+    gap: 1.5rem;
+
+    h1 {
+      color: $black-color !important;
+    }
+  }
+}

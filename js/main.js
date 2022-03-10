@@ -14,17 +14,24 @@ const openWhitenoiseButton = document.querySelector("#whitenoise-open");
 
 // Focus Mode
 const toggleFocusMode = document.querySelector("#toggle-focus")
-const mainContainer = document.querySelector("main");
+const mainSection = document.querySelector("main");
 
 // Mode
 const toggleMode = document.querySelector("#toggle-mode");
+const toggleModeText = document.querySelector("#toggle-mode .text");
+const toggleModeIcon = document.querySelector("#toggle-mode .material-icons")
+const mainContainers = document.querySelectorAll("main,body");
+
+// Break Popup
+const breakPopup = document.querySelector("#break")
+const closeBreakPopup = document.querySelector("#close-break");
 
 // Initialize local storage
 initalizeStorage();
 
 let time = {
-  minutes: localStorage.getItem("time-minutes"),
-  seconds: localStorage.getItem("time-seconds")
+  minutes: +localStorage.getItem("time-minutes"),
+  seconds: +localStorage.getItem("time-seconds")
 }
 
 
@@ -45,16 +52,46 @@ openWhitenoiseButton.addEventListener("click", function () {
   whitenoiseDialog.style.display = "flex"
 })
 
+// Break popup
+closeBreakPopup.addEventListener("click", function () {
+  breakPopup.style.display = "none";
+})
+
 // Focus mode
 toggleFocusMode.addEventListener("click", function () {
-  mainContainer.requestFullscreen();
+  mainSection.requestFullscreen();
 })
 
 // Toggle Mode
-toggleMode.addEventListener("click", function () {
-  mainContainer.style.backgroundColor = "#d26f75";
-  mainContainer.style.color = "#fdfdfd";
-})
+toggleMode.addEventListener("click", onToggleMode);
+
+function onToggleMode() {
+  switch (toggleModeText.innerText) {
+    case "Work":
+      toggleModeText.innerText = "Break";
+      toggleModeIcon.innerText = "done"
+      changeBackground("#ecdddd")
+      break;
+
+    case "Break":
+      toggleModeText.innerText = "Long Break";
+      toggleModeIcon.innerText = "done_all"
+      changeBackground("#fbdbdb")
+      break;
+
+    default:
+      toggleModeText.innerText = "Work";
+      toggleModeIcon.innerText = "whatshot"
+      changeBackground("#ece7dd")
+  }
+
+  function changeBackground(background) {
+    mainContainers.forEach(function (container) {
+      container.style.background = background;
+      container.style.color = "#fdfdfd";
+    });
+  }
+}
 
 
 function togglePause() {
@@ -80,37 +117,37 @@ function deletePomodoro() {
 
 function initalizeStorage() {
   localStorage.setItem("time-minutes", 00);
-  localStorage.setItem("time-seconds", 02);
+  localStorage.setItem("time-seconds", 03);
 }
 
 const pomodoro = {
   time: null,
   interval: null,
   stoppedTime: null,
-  start(minutes, seconds) {
-    this.time = minutes * 60 + seconds;
-    time = this.time;
+  start() {
+    this.time = time.minutes * 60 + time.seconds;
+    let timeDuration = this.time;
 
     if (this.stoppedTime) {
-      time = this.stoppedTime;
+      timeDuration = this.stoppedTime;
     }
 
     this.interval = setInterval(onInterval, 1000);
 
     function onInterval() {
-      const minutes = parseInt(time / 60);
-      const seconds = time % 60;
+      const minutes = parseInt(timeDuration / 60);
+      const seconds = timeDuration % 60;
 
-      if (time <= 0) {
-        timeMinutes.innerText = localStorage.getItem("time-minutes");
-        timeSeconds.innerText = localStorage.getItem("time-seconds");
+      if (timeDuration <= 0) {
+        breakPopup.style.display = "flex";
 
+        onToggleMode();
         clearInterval(pomodoro.interval);
       }
 
       timeMinutes.innerText = minutes;
       timeSeconds.innerText = seconds;
-      time -= 1;
+      timeDuration -= 1;
     }
   },
   stop() {

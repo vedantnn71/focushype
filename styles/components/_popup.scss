@@ -1,0 +1,47 @@
+.popup {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(1, 1, 1, 0.3);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  animation: opacity 0.8s ease;
+
+  .popup__content {
+    background: $white-color;
+    border: 4px solid $primary-color;
+    border-radius: 16px;
+    box-shadow: $box-shadow;
+    animation: scale 0.3s ease;
+  }
+
+  &::backdrop {
+    background: rgba(1, 1, 1, 0.3);
+  }
+}
+
+.popup__close {
+  font-size: 36px;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  padding: 0.2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@keyframes scale {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}

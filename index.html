@@ -43,7 +43,7 @@
       </button>
       <button class="button__primary" id="toggle-mode">
         <span class="material-icons"> whatshot </span>
-        Work
+        <span class="text"> Work </span>
       </button>
     </div>
     <main>
@@ -70,11 +70,14 @@
       </div>
     </main>
 
-    <div id="whitenoise">
-      <span class="material-icons button__light" id="whitenoise-close">
+    <div id="whitenoise" class="popup">
+      <span
+        class="material-icons popup__close button__light"
+        id="whitenoise-close"
+      >
         clear
       </span>
-      <div class="whitenoise__main">
+      <div class="whitenoise__main popup__content">
         <div class="whitenoise__header">
           <h1>White Noise</h1>
         </div>
@@ -86,6 +89,13 @@
             <h2 class="heading__large">Rain</h2>
           </li>
         </ul>
+      </div>
+    </div>
+
+    <div class="popup" id="break">
+      <div class="popup__content">
+        <h1 class="heading__large">Time for a break!</h1>
+        <button id="close-break" class="button__primary">Okay</button>
       </div>
     </div>
 
