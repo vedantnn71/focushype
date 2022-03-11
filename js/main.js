@@ -17,14 +17,10 @@ const toggleFocusMode = document.querySelector("#toggle-focus")
 const mainSection = document.querySelector("main");
 
 // Mode
-const toggleMode = document.querySelector("#toggle-mode");
-const toggleModeText = document.querySelector("#toggle-mode .text");
-const toggleModeIcon = document.querySelector("#toggle-mode .material-icons")
+const toggleModeButton = document.querySelector("#toggle-mode");
+const toggleModeBtnText = document.querySelector("#toggle-mode .text");
+const toggleModeBtnIcon = document.querySelector("#toggle-mode .material-icons")
 const mainContainers = document.querySelectorAll("main,body");
-
-// Break Popup
-const breakPopup = document.querySelector("#break")
-const closeBreakPopup = document.querySelector("#close-break");
 
 // Initialize local storage
 initalizeStorage();
@@ -36,6 +32,7 @@ let time = {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+  dialog("hey sup!");
   pomodoro.showInitialTime(time);
 });
 
@@ -52,37 +49,58 @@ openWhitenoiseButton.addEventListener("click", function () {
   whitenoiseDialog.style.display = "flex"
 })
 
-// Break popup
-closeBreakPopup.addEventListener("click", function () {
-  breakPopup.style.display = "none";
-})
-
 // Focus mode
 toggleFocusMode.addEventListener("click", function () {
   mainSection.requestFullscreen();
 })
 
 // Toggle Mode
-toggleMode.addEventListener("click", onToggleMode);
+toggleModeButton.addEventListener("click", onToggleMode);
 
 function onToggleMode() {
-  switch (toggleModeText.innerText) {
+  switch (toggleModeBtnText.innerText) {
     case "Work":
-      toggleModeText.innerText = "Break";
-      toggleModeIcon.innerText = "done"
+      // Change to break
+      time = {
+        minutes: +localStorage.getItem("break-minutes"),
+        seconds: +localStorage.getItem("break-seconds")
+      }
+      toggleModeBtnText.innerText = "Break";
+      toggleModeBtnIcon.innerText = "done"
       changeBackground("#ecdddd")
+      pomodoro.showInitialTime();
+      breakPopup.style.display = "flex";
+      breakPopupText.innerText = "Time for a break";
+
       break;
 
     case "Break":
-      toggleModeText.innerText = "Long Break";
-      toggleModeIcon.innerText = "done_all"
+      time = {
+        minutes: +localStorage.getItem("longbreak-minutes"),
+        seconds: +localStorage.getItem("longbreak-seconds")
+      }
+      toggleModeBtnText.innerText = "Long Break";
+      toggleModeBtnIcon.innerText = "done_all"
+      breakPopup.style.display = "flex";
+      breakPopupText.innerText = "Time for a looong break";
+
       changeBackground("#fbdbdb")
+      pomodoro.showInitialTime();
       break;
 
     default:
-      toggleModeText.innerText = "Work";
-      toggleModeIcon.innerText = "whatshot"
+      time = {
+        minutes: +localStorage.getItem("time-minutes"),
+        seconds: +localStorage.getItem("time-seconds")
+      }
+      toggleModeBtnText.innerText = "Work";
+      toggleModeBtnIcon.innerText = "whatshot"
+      breakPopup.style.display = "flex";
+      breakPopupText.innerText = "Time for work";
+
       changeBackground("#ece7dd")
+      pomodoro.showInitialTime();
+      break;
   }
 
   function changeBackground(background) {
@@ -104,13 +122,14 @@ function togglePause() {
   } else {
     toggleButtonText.innerText = "Start";
     pomodoroDiv.dataset.isRunning = false;
+    deletePomodoroButton.disabled = true;
 
     pomodoro.stop();
   }
 }
 
 function deletePomodoro() {
-  if (window.confirm("Are you sure?")) {
+  if (window.confirm("Are you sure to delete pomodoro?")) {
     pomodoro.delete(time);
   }
 }
@@ -118,6 +137,10 @@ function deletePomodoro() {
 function initalizeStorage() {
   localStorage.setItem("time-minutes", 00);
   localStorage.setItem("time-seconds", 03);
+  localStorage.setItem("break-minutes", 00)
+  localStorage.setItem("break-seconds", 05)
+  localStorage.setItem("longbreak-minutes", 00)
+  localStorage.setItem("longbreak-seconds", 06)
 }
 
 const pomodoro = {
@@ -139,9 +162,7 @@ const pomodoro = {
       const seconds = timeDuration % 60;
 
       if (timeDuration <= 0) {
-        breakPopup.style.display = "flex";
-
-        onToggleMode();
+        pomodoro.break();
         clearInterval(pomodoro.interval);
       }
 
@@ -155,11 +176,16 @@ const pomodoro = {
     clearInterval(this.interval)
   },
   delete() {
-    this.showInitialTime();
+    this.stoppedTime = +localStorage.getItem("break-minutes") * 60 + +localStorage.getItem("break-seconds")
+    clearInterval(this.interval);
   },
   showInitialTime() {
+    console.log(time);
+
     timeMinutes.innerText = time.minutes;
     timeSeconds.innerText = time.seconds;
+  },
+  break() {
+    onToggleMode();
   }
 }
-
