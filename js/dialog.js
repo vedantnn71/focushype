@@ -8,7 +8,7 @@ dialogCloseButton.addEventListener("click", function() {
 
 /**
  * Opens dialog with custom message. 
- * @param {string} message message to show in heading of the dialog.
+ * @param  {string} message message to show in heading of the dialog.
  * @return {void} show the dialog to the user and close when user asks. 
 **/
 function dialog(message) {
