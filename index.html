@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="styles/main.scss" rel="stylesheet" />
-    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
+    <link href="./styles/main.scss" rel="stylesheet" />
+    <link rel="shortcut icon" href="./favicon.svg" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -17,20 +17,20 @@
     <nav>
       <a href="/" class="logo__container">
         <div class="img__container">
-          <img src="img/logo.svg" alt="Logo of Focushype" />
+          <img src="./assets/logo.svg" alt="Logo of Focushype" />
         </div>
         <h3 class="link logo__text">Focushype</h3>
       </a>
       <ul class="navlinks__container">
-        <li>
-          <a href="/settings" class="navlink">Settings</a>
-        </li>
+        <!-- <li>
+          <a href="" class="navlink">Settings</a>
+        </li> -->
         <li>
           <a
             href="https://twitter.com/vedantnn7"
             class="navlink button__primary follow"
             target="_blank"
-            ><img src="img/twitter.svg" alt="twitter icon" class="icon" />
+            ><img src="./assets/twitter.svg" alt="twitter icon" class="icon" />
             Twitter</a
           >
         </li>
@@ -53,24 +53,25 @@
         </h1>
       </div>
       <div class="button__group">
+        <button id="toggle-pomodoro" class="button__primary">
+          <span class="material-icons"> play_arrow </span>
+          <span class="text">Start</span>
+        </button>
         <button
           id="delete-pomodoro"
           disabled
           class="icon__button button__light"
         >
           <span class="material-icons"> delete </span>
+          <span class="text">Delete</span>
         </button>
-        <button id="toggle-pomodoro" class="button__primary">
-          <span class="material-icons"> play_arrow </span>
-          <span class="text">Start</span>
-        </button>
-        <button id="whitenoise-open" class="icon__button button__light">
+        <!-- <button id="whitenoise-open" class="icon__button button__light">
           <span class="material-icons"> music_note </span>
-        </button>
+        </button> -->
       </div>
     </main>
 
-    <div id="whitenoise" class="popup">
+    <!-- <div id="whitenoise" class="popup">
       <span
         class="material-icons popup__close button__light"
         id="whitenoise-close"
@@ -90,7 +91,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
 
     <div class="popup" id="dialog">
       <div class="popup__content">
@@ -98,10 +99,6 @@
         <button id="close-dialog" class="button__primary">Okay</button>
       </div>
     </div>
-
-    <script type="text/javascript" src="js/dialog.js"></script>
-    <script type="text/javascript" src="js/shortcuts.js"></script>
-    <script type="text/javascript" src="js/pomodoro.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
