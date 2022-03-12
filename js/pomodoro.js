@@ -1,4 +1,4 @@
-import modifyButton from "./buttons";
+import modifyButton from "./utils/modifyButton";
 import onToggleMode from "./mode";
 import { time } from "./utils/time";
 

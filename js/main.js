@@ -9,10 +9,6 @@ import initalizeStorage from "./utils/initializeStorage";
 // Pomodoro
 const toggleButton = document.querySelector("#toggle-pomodoro");
 const deletePomodoroButton = document.querySelector("#delete-pomodoro");
-// Whitenoise
-// const whitenoiseDialog = document.querySelector("#whitenoise")
-// const closeWhitenoiseButton = document.querySelector("#whitenoise-close")
-// const openWhitenoiseButton = document.querySelector("#whitenoise-open")
 
 // Focus Mode
 const toggleFocusMode = document.querySelector("#toggle-focus");
@@ -21,9 +17,6 @@ const mainSection = document.querySelector("main");
 // Mode
 const toggleModeButton = document.querySelector("#toggle-mode");
 
-// Initialize local storage
-initalizeStorage();
-
 document.addEventListener("DOMContentLoaded", function () {
   pomodoro.showInitialTime(time);
 });
@@ -31,15 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // Pause/delete pomodoro
 toggleButton.addEventListener("click", togglePause);
 deletePomodoroButton.addEventListener("click", deletePomodoro);
-
-// Whitenoise dialog
-// closeWhitenoiseButton.addEventListener("click", function () {
-//   whitenoiseDialog.style.display = "none"
-// })
-
-// openWhitenoiseButton.addEventListener("click", function () {
-//   whitenoiseDialog.style.display = "flex"
-// })
 
 // Focus mode
 toggleFocusMode.addEventListener("click", function () {
@@ -55,4 +39,9 @@ if (localStorage.getItem("ask-notifcation") === "true") {
     "Please grant notification permission to notify you about pomdoros",
     requestNotification
   );
+}
+
+// Initialize local storage
+if (localStorage.getItem("initialize") === null) {
+  initalizeStorage();
 }
