@@ -15,3 +15,12 @@ function dialog(message) {
   dialogContainer.style.display = "flex"
   dialogHeading.innerText = message
 }
+
+function confirm(message, onSuccess, onDeny) {
+  dialogContainer.style.display = "flex"
+  dialogHeading.innerText = message
+
+  dialogCloseButton.addEventListener("click", onSuccess)
+}
+
+export { dialog, confirm }
