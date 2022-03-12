@@ -1,6 +1,7 @@
 import modifyButton from "./utils/modifyButton";
 import onToggleMode from "./mode";
 import { time } from "./utils/time";
+import trailZero from "./utils/trailZero";
 
 // Select DOM
 const timeMinutes = document.querySelector("#time-minutes");
@@ -66,10 +67,30 @@ const pomodoro = {
         modifyButton(toggleButton, "Start", "play_arrow");
         audio.play();
         this.showInitialTime();
+
+        switch (localStorage.getItem("running-mode")) {
+          case "break":
+            notifcation(
+              "Time for work",
+              "you have completed your short break pomodoro."
+            );
+            break;
+          case "longbreak":
+            notifcation(
+              "Time for work",
+              "you have completed your short long break pomodoro."
+            );
+            break;
+          default:
+            notifcation(
+              "Time for break",
+              "you have completed your one pomodoro of work."
+            );
+        }
       }
 
-      timeMinutes.innerText = minutes;
-      timeSeconds.innerText = seconds;
+      timeMinutes.innerText = trailZero(minutes);
+      timeSeconds.innerText = trailZero(seconds);
       timeDuration -= 1;
     }
   },
@@ -84,10 +105,8 @@ const pomodoro = {
     clearInterval(this.interval);
   },
   showInitialTime() {
-    console.log(time);
-
-    timeMinutes.innerText = time.minutes;
-    timeSeconds.innerText = time.seconds;
+    timeMinutes.innerText = trailZero(time.minutes);
+    timeSeconds.innerText = trailZero(time.seconds);
   },
 };
 

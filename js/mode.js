@@ -20,20 +20,22 @@ function onToggleMode(showDialog = false) {
         +localStorage.getItem("break-minutes"),
         +localStorage.getItem("break-seconds")
       );
+      localStorage.setItem("running-mode", "break");
       toggleModeBtnText.innerText = "Break";
       toggleModeBtnIcon.innerText = "done";
-      changeBackground("#ecdddd");
       pomodoro.showInitialTime();
+      changeBackground("#ecdddd");
 
       if (showDialog === true) dialog("Time for break");
 
       break;
 
     case "Break":
-      time = {
-        minutes: +localStorage.getItem("longbreak-minutes"),
-        seconds: +localStorage.getItem("longbreak-seconds"),
-      };
+      setTime(
+        +localStorage.getItem("longbreak-minutes"),
+        +localStorage.getItem("longbreak-seconds")
+      );
+      localStorage.setItem("running-mode", "longbreak");
       toggleModeBtnText.innerText = "Long Break";
       toggleModeBtnIcon.innerText = "done_all";
       pomodoro.showInitialTime();
@@ -44,10 +46,11 @@ function onToggleMode(showDialog = false) {
       break;
 
     default:
-      time = {
-        minutes: +localStorage.getItem("time-minutes"),
-        seconds: +localStorage.getItem("time-seconds"),
-      };
+      setTime(
+        +localStorage.getItem("time-minutes"),
+        +localStorage.getItem("time-seconds")
+      );
+      localStorage.setItem("running-mode", "work");
       toggleModeBtnText.innerText = "Work";
       toggleModeBtnIcon.innerText = "whatshot";
       pomodoro.showInitialTime();
