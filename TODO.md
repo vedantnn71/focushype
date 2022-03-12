@@ -2,4 +2,4 @@
   - [ ] White noise
   - [ ] Change to long break after completing 4 pomdoros
 - [ ] Fix Bugs
-  - [ ] Time not updating after toggling to break from work.
+  - [ x ] Time not updating after toggling to break from work.
