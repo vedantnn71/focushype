@@ -45,8 +45,11 @@ toggleButtons.addEventListener("click", function () {
     modifyButton(toggleButtons, "", "menu");
   }
 });
+
 // Toggle Mode
-toggleModeButton.addEventListener("click", onToggleMode);
+toggleModeButton.addEventListener("click", function () {
+  onToggleMode(false, true);
+});
 
 // Notification
 if (localStorage.getItem("ask-notifcation") === "true") {
