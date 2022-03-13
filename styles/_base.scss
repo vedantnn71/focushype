@@ -1,5 +1,5 @@
 /******* Colors ********/
-$primary-color: #D26F75;
+$primary-color: #d26f75;
 $light-color: #ece7dd;
 $black-color: #222222;
 $white-color: #fdfdfd;
@@ -8,9 +8,28 @@ $white-color: #fdfdfd;
 @mixin flex($justify: space-between, $items: center, $direction: row) {
   display: flex;
   flex-direction: $direction;
-  justify-content: $justify; 
+  justify-content: $justify;
   align-items: $items;
 }
 
 /******* Box Shadow ********/
 $box-shadow: 0px 4px 154px rgba(34, 34, 34, 0.05);
+
+/******* Animations ********/
+@keyframes scale {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

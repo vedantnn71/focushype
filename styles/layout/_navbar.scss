@@ -3,6 +3,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
+  padding-right: 0;
   background-color: $white-color;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: $box-shadow;
@@ -19,10 +20,10 @@ nav {
     }
 
     .follow {
-      gap: .5rem;
+      gap: 0.5rem;
     }
   }
-  
+
   .logo__container {
     display: flex;
     flex-direction: row;
@@ -37,6 +38,23 @@ nav {
 
     .img__container {
       max-width: 4rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    .follow {
+      padding: 0.8rem 1.5rem !important;
+      display: none !important;
+
+      .text {
+        display: none;
+      }
+    }
+    
+    ul {
+      margin-right: 1.5rem;
     }
   }
 }

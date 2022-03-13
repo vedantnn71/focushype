@@ -14,6 +14,8 @@
     <title>Focushype</title>
   </head>
   <body>
+    <!-- FOR FOUC -->
+    <script>0</script>
     <nav>
       <a href="/" class="logo__container">
         <div class="img__container">
@@ -31,20 +33,32 @@
             class="navlink button__primary follow"
             target="_blank"
             ><img src="./assets/twitter.svg" alt="twitter icon" class="icon" />
-            Twitter</a
+            <span class="text">Twitter</span></a
           >
+        </li>
+        <li>
+          <a id="toggle-buttons" class="button__light">
+            <span class="material-icons"> menu </span>
+          </a>
         </li>
       </ul>
     </nav>
-    <div class="buttons">
-      <button class="focus__mode button__light" id="toggle-focus">
-        <span class="material-icons"> bolt </span>
-        Focus Mode
-      </button>
-      <button class="button__primary" id="toggle-mode">
+    <div class="buttons" id="btns">
+      <button class="button__light" id="toggle-mode">
         <span class="material-icons"> whatshot </span>
         <span class="text"> Work </span>
       </button>
+      <button class="focus__mode button__light" id="toggle-focus">
+        <span class="material-icons"> bolt </span>
+        <span class="text"> Focus Mode </span></button
+      ><a
+        href="https://twitter.com/vedantnn7"
+        class="navlink button__light follow"
+        target="_blank"
+      >
+        <img src="./assets/twitter.svg" alt="twitter icon" class="icon" />
+        <span class="text">Twitter</span>
+      </a>
     </div>
     <main>
       <div id="pomodoro" data-is-running="false">
@@ -99,6 +113,7 @@
         <button id="close-dialog" class="button__primary">Okay</button>
       </div>
     </div>
+
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

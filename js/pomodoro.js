@@ -47,9 +47,9 @@ const pomodoro = {
   interval: null,
   stoppedTime: null,
   start() {
-    let onIntervalThis = this;
     this.time = time.minutes * 60 + time.seconds;
     let timeDuration = this.time;
+    let completed = +localStorage.getItem("completed");
 
     if (this.stoppedTime) {
       timeDuration = this.stoppedTime;
@@ -65,8 +65,8 @@ const pomodoro = {
         clearInterval(pomodoro.interval);
         onToggleMode(true);
         modifyButton(toggleButton, "Start", "play_arrow");
-        audio.play();
         this.showInitialTime();
+        audio.play();
 
         switch (localStorage.getItem("running-mode")) {
           case "break":
@@ -74,6 +74,7 @@ const pomodoro = {
               "Time for work",
               "you have completed your short break pomodoro."
             );
+
             break;
           case "longbreak":
             notifcation(
