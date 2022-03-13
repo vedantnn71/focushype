@@ -1,6 +1,7 @@
 import modifyButton from "./utils/modifyButton";
 import onToggleMode from "./mode";
 import { time } from "./utils/time";
+import { notification } from "./notification";
 import trailZero from "./utils/trailZero";
 
 // Select DOM
@@ -70,20 +71,20 @@ const pomodoro = {
 
         switch (localStorage.getItem("running-mode")) {
           case "break":
-            notifcation(
+            notification(
               "Time for work",
               "you have completed your short break pomodoro."
             );
 
             break;
           case "longbreak":
-            notifcation(
+            notification(
               "Time for work",
               "you have completed your short long break pomodoro."
             );
             break;
           default:
-            notifcation(
+            notification(
               "Time for break",
               "you have completed your one pomodoro of work."
             );
@@ -100,10 +101,9 @@ const pomodoro = {
     clearInterval(this.interval);
   },
   delete() {
-    this.stoppedTime =
-      +localStorage.getItem("break-minutes") * 60 +
-      +localStorage.getItem("break-seconds");
     clearInterval(this.interval);
+    this.time = time.minutes * 60 + time.seconds;
+    this.showInitialTime();
   },
   showInitialTime() {
     timeMinutes.innerText = trailZero(time.minutes);
