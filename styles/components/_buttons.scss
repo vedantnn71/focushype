@@ -97,7 +97,7 @@ button:disabled {
     animation: 0.3s ease scale;
 
     .follow {
-      display: flex !important;
+      display: flex;
       gap: 4px;
 
       img {
@@ -107,5 +107,13 @@ button:disabled {
   }
   #toggle-buttons {
     display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .buttons {
+    .follow {
+      display: none !important;
+    }
   }
 }
