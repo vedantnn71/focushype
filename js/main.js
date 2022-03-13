@@ -2,6 +2,7 @@ import { dialog, confirm } from "./dialog";
 import { pomodoro, togglePause, deletePomodoro } from "./pomodoro";
 import { notification, requestNotification } from "./notification";
 import { time } from "./utils/time";
+import modifyButton from "./utils/modifyButton";
 import onToggleMode from "./mode";
 import initalizeStorage from "./utils/initializeStorage";
 
@@ -17,6 +18,10 @@ const mainSection = document.querySelector("main");
 // Mode
 const toggleModeButton = document.querySelector("#toggle-mode");
 
+// Toggle show/hide buttons
+const toggleButtons = document.querySelector("#toggle-buttons");
+const buttons = document.querySelector(".buttons");
+
 document.addEventListener("DOMContentLoaded", function () {
   pomodoro.showInitialTime(time);
 });
@@ -30,6 +35,16 @@ toggleFocusMode.addEventListener("click", function () {
   mainSection.requestFullscreen();
 });
 
+// Show/hide buttons
+toggleButtons.addEventListener("click", function () {
+  if (buttons.style.display === "" || buttons.style.display === "none") {
+    buttons.style.display = "flex";
+    modifyButton(toggleButtons, "", "clear");
+  } else if (buttons.style.display === "flex") {
+    buttons.style.display = "none";
+    modifyButton(toggleButtons, "", "menu");
+  }
+});
 // Toggle Mode
 toggleModeButton.addEventListener("click", onToggleMode);
 

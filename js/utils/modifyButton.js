@@ -8,8 +8,11 @@ function modifyButton(element, text, icon) {
   const elementText = document.querySelector(`#${element.id} .text`);
   const elementIcon = document.querySelector(`#${element.id} .material-icons`);
 
-  elementText.innerText = text;
-  elementIcon.innerText = icon;
+  if (elementText !== null) {
+    elementText.innerText = text;
+  } else if (elementIcon !== null) {
+    elementIcon.innerText = icon;
+  }
 }
 
 export default modifyButton;

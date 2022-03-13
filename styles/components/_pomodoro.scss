@@ -21,5 +21,17 @@
 @media (min-width: 1024px) {
   #pomodoro {
     max-width: 20rem;
-  }  
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #pomodoro {
+    max-width: 12rem;
+    max-height: 12rem;
+    border: 6px solid;
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
 }
