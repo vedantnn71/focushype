@@ -10,8 +10,8 @@ function initalizeStorage() {
   localStorage.setItem("longbreak-seconds", "0");
   localStorage.setItem("initialize", "false");
   sessionStorage.setItem("completed", "0");
-
   location.reload();
+  localStorage.setItem("initialize", "false");
 }
 
 export default initalizeStorage;
