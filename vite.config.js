@@ -1,17 +1,10 @@
-import legacy from '@vitejs/plugin-legacy'
-import { defineConfig } from 'vite'
-import path from "path";
-
+import legacy from "@vitejs/plugin-legacy";
+import { defineConfig } from "vite";
 
 export default defineConfig({
-  resolve: {
-    alias: {
-     dialog: path.resolve("./js/dialog.js")
-    }
-  },
   plugins: [
     legacy({
-      targets: ['defaults', 'not IE 11']
+      targets: ["defaults", "not IE 11"],
     }),
-  ]
-})
+  ],
+});
