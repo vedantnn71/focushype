@@ -10,7 +10,7 @@ const timeSeconds = document.querySelector("#time-seconds");
 const pomodoroDiv = document.querySelector("#pomodoro");
 const toggleButton = document.querySelector("#toggle-pomodoro");
 const deletePomodoroButton = document.querySelector("#delete-pomodoro");
-const audio = new Audio("../assets/done.mp3");
+const audio = new Audio("/done.mp3");
 
 /**
  * Toggle pause or resume in pomodoro.
