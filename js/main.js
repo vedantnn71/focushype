@@ -1,12 +1,12 @@
-import { dialog, confirm } from "./dialog";
+import { confirm } from "./dialog";
 import { pomodoro, togglePause, deletePomodoro } from "./pomodoro";
-import { notification, requestNotification } from "./notification";
+import { requestNotification } from "./notification";
 import { time } from "./utils/time";
 import modifyButton from "./utils/modifyButton";
 import onToggleMode from "./mode";
 import initalizeStorage from "./utils/initializeStorage";
 
-// Select DOM
+/* Select DOM */
 // Pomodoro
 const toggleButton = document.querySelector("#toggle-pomodoro");
 const deletePomodoroButton = document.querySelector("#delete-pomodoro");
@@ -63,3 +63,4 @@ if (localStorage.getItem("ask-notifcation") === "true") {
 if (localStorage.getItem("initialize") === null) {
   initalizeStorage();
 }
+

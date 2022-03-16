@@ -14,7 +14,7 @@ const mainContainers = document.querySelectorAll("main,body");
  * @param {boolean} forceChangeToLong forcefully show long pomodoro.
  **/
 function onToggleMode(showDialog = false, forceChangeToLong = false) {
-  const completed = +sessionStorage.getItem("completed");
+  const completed = +localStorage.getItem("completed");
   const runningMode = localStorage.getItem("running-mode") ?? "work";
 
   if (runningMode === "work") {
@@ -25,7 +25,7 @@ function onToggleMode(showDialog = false, forceChangeToLong = false) {
     pomodoro.showInitialTime();
 
     if (forceChangeToLong === false)
-      sessionStorage.setItem("completed", completed + 1);
+      localStorage.setItem("completed", completed + 1);
 
     if (showDialog === true) dialog("Time for break");
   } else if (
@@ -37,6 +37,7 @@ function onToggleMode(showDialog = false, forceChangeToLong = false) {
     modifyButton(toggleModeButton, "Long break", "done_all");
     pomodoro.showInitialTime();
 
+    if (!forceChangeToLong) localStorage.setItem("completed", 0);
     if (showDialog === true) dialog("Time for loong break");
   } else {
     changeTime("time");

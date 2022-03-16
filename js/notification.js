@@ -1,7 +1,8 @@
 /**
  * Send push notification to the client
  * @param {string} message message for push notification
- * @param {string} body description for push notification **/
+ * @param {string} body description for push notification
+ **/
 function notification(message, body) {
   const img = "../assets/logo.svg";
   const notification = new Notification(message, {
@@ -12,7 +13,7 @@ function notification(message, body) {
 
 /**
  * Ask user whether to show the push notifcation.
-**/
+ **/
 function requestNotification() {
   try {
     Notification.requestPermission().then(
