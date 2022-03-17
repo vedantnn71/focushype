@@ -7,7 +7,7 @@ workbox.routing.registerRoute(
   new workbox.strategies.CacheFirst({
     cacheName: "images",
     plugins: [
-      new CacheableResponsePlugin({
+      new workbox.cacheableResponse.CacheableResponsePlugin({
         statuses: [0, 200],
       }),
       new ExpirationPlugin({
