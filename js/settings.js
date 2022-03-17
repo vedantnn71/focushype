@@ -67,4 +67,4 @@ function initSettings() {
   updateStorage();
 }
 
-export { initSettings };
+export { initSettings, initializeSettingsUI };
