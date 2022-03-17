@@ -9,6 +9,7 @@ function initalizeStorage() {
   localStorage.setItem("longbreak-minutes", 30);
   localStorage.setItem("longbreak-seconds", 0);
   localStorage.setItem("initialize", false);
+  localStorage.setItem("ask-notification", true);
   sessionStorage.setItem("completed", 0);
 
   location.reload();

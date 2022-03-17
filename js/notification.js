@@ -4,10 +4,15 @@
  * @param {string} body description for push notification
  **/
 function notification(message, body) {
-  const img = "../assets/logo.svg";
-  const notification = new Notification(message, {
+  const img = "/icons/manifest-icon-192.maskable.png";
+  const notify = new Notification(message, {
     body: body,
     icon: img,
+  });
+
+  notify.onclick(function () {
+    notify.close();
+    window.parent.focus();
   });
 }
 
@@ -16,11 +21,11 @@ function notification(message, body) {
  **/
 function requestNotification() {
   try {
-    Notification.requestPermission().then(
-      localStorage.setItem("ask-notification", false)
-    );
+    Notification.requestPermission().then(function () {
+      localStorage.setItem("ask-notification", false);
+    });
   } catch (err) {
-    console.log(err);
+    console.log("Unexpected Error: ", err);
   }
 }
 

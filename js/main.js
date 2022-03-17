@@ -1,6 +1,6 @@
 import { confirm } from "./dialog";
 import { pomodoro, togglePause, deletePomodoro } from "./pomodoro";
-import { requestNotification } from "./notification";
+import { notification, requestNotification } from "./notification";
 import { time } from "./utils/time";
 import modifyButton from "./utils/modifyButton";
 import onToggleMode from "./mode";
@@ -52,7 +52,7 @@ toggleModeButton.addEventListener("click", function () {
 });
 
 // Notification
-if (localStorage.getItem("ask-notifcation") === "true") {
+if (localStorage.getItem("ask-notification") === "true") {
   confirm(
     "Please grant notification permission to notify you about pomdoros",
     requestNotification
@@ -63,4 +63,3 @@ if (localStorage.getItem("ask-notifcation") === "true") {
 if (localStorage.getItem("initialize") === null) {
   initalizeStorage();
 }
-
