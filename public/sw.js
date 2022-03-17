@@ -10,7 +10,7 @@ workbox.routing.registerRoute(
       new workbox.cacheableResponse.CacheableResponsePlugin({
         statuses: [0, 200],
       }),
-      new ExpirationPlugin({
+      new workbox.strategies.ExpirationPlugin({
         maxEntries: 60,
         maxAgeSeconds: 7 * 24 * 60 * 60,
       }),
@@ -38,3 +38,5 @@ workbox.routing.registerRoute(
 self.addEventListener("install", function (event) {
   console.log("Installed!");
 });
+
+// TODO --> Update code because of invalid methods calls.

@@ -1,7 +1,7 @@
-import modifyButton from "./utils/modifyButton";
 import onToggleMode from "./mode";
-import { time } from "./utils/time";
 import { notification } from "./notification";
+import modifyButton from "./utils/modifyButton";
+import { time } from "./utils/time";
 import trailZero from "./utils/trailZero";
 
 // Select DOM

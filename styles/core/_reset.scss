@@ -7,9 +7,18 @@
 
 body {
   font-family: "Space Grotesk", sans-serif;
-  background-color: $light-color; 
+  background-color: $light-color;
   color: $black-color;
   overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary-color;
 }
 
 li {
@@ -21,15 +30,18 @@ a {
   color: $black-color;
 }
 
-a, button, .link {
-  transition: .2s ease;
+a,
+button,
+.link {
+  transition: 0.2s ease;
   cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
 
   &:hover {
     opacity: 80%;
   }
 }
- 
+
 img {
   width: 100%;
 }

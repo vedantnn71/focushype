@@ -10,13 +10,23 @@ nav {
 
   ul {
     display: flex;
-    gap: 2rem;
+    gap: 0rem;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
 
     li {
       display: flex;
       align-items: center;
       justify-content: center;
+
+      button {
+        border: none;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1rem;
+        color: $black-color;
+      }
     }
 
     .follow {
@@ -46,13 +56,17 @@ nav {
   nav {
     .follow {
       padding: 0.8rem 1.5rem !important;
-      display: none !important;
 
       .text {
         display: none;
       }
     }
-    
+
+    .follow,
+    .settings-open {
+      display: none !important;
+    }
+
     ul {
       margin-right: 1.5rem;
     }
