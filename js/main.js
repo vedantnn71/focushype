@@ -52,11 +52,16 @@ toggleModeButton.addEventListener("click", function () {
 });
 
 // Notification
-if (localStorage.getItem("ask-notification") === "true") {
-  confirm(
-    "Please grant notification permission to notify you about pomdoros",
-    requestNotification
-  );
+if (
+  localStorage.getItem("ask-notification") === "true" &&
+  typeof Notification !== "undefined"
+) {
+  setTimeout(function () {
+    confirm(
+      "Please grant notification permission to notify you about pomdoros",
+      requestNotification
+    );
+  }, 10000);
 }
 
 // Initialize local storage

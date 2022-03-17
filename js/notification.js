@@ -26,6 +26,7 @@ function requestNotification() {
     });
   } catch (err) {
     console.log("Unexpected Error: ", err);
+    localStorage.setItem("ask-notification", false);
   }
 }
 
