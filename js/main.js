@@ -1,10 +1,12 @@
 import { confirm } from "./dialog";
 import { pomodoro, togglePause, deletePomodoro } from "./pomodoro";
-import { notification, requestNotification } from "./notification";
+import { requestNotification } from "./notification";
 import { time } from "./utils/time";
+import { initSettings } from "./settings";
 import modifyButton from "./utils/modifyButton";
 import onToggleMode from "./mode";
 import initalizeStorage from "./utils/initializeStorage";
+import { downloadBackup, restoreBackup } from "./utils/backup";
 
 /* Select DOM */
 // Pomodoro
@@ -22,8 +24,24 @@ const toggleModeButton = document.querySelector("#toggle-mode");
 const toggleButtons = document.querySelector("#toggle-buttons");
 const buttons = document.querySelector(".buttons");
 
+// Settings
+const settings = document.querySelector("#settings");
+const downloadBackupBtn = document.querySelector("#download-backup");
+const fileElement = document.querySelector("#restore-backup");
+const restoreBtn = document.querySelector("#restore-backup-btn");
+const closeSettings = document.querySelector("#close-settings");
+const openSettings = document.querySelectorAll(".settings-open");
+
 document.addEventListener("DOMContentLoaded", function () {
   pomodoro.showInitialTime(time);
+  initSettings();
+
+  openSettings.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      settings.style.display = "flex";
+      buttons.style.display = "none";
+    });
+  });
 });
 
 // Pause/delete pomodoro
@@ -49,6 +67,18 @@ toggleButtons.addEventListener("click", function () {
 // Toggle Mode
 toggleModeButton.addEventListener("click", function () {
   onToggleMode(false, true);
+});
+
+// Backup
+downloadBackupBtn.addEventListener("click", downloadBackup);
+fileElement.addEventListener("change", restoreBackup);
+
+restoreBtn.addEventListener("click", function () {
+  fileElement.click();
+});
+
+closeSettings.addEventListener("click", function () {
+  settings.style.display = "none";
 });
 
 // Notification

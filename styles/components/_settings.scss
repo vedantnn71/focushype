@@ -1,0 +1,126 @@
+#settings {
+  // display: flex;
+
+  #close-settings {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: $primary-color;
+    background: $light-color;
+    border-radius: 8px;
+    border: 1px solid rgba($black-color, 0.8);
+    padding: 4px;
+    cursor: pointer;
+  }
+
+  .popup__content {
+    display: flex;
+    width: 60%;
+    height: 80%;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    overflow-y: scroll;
+
+    .heading {
+      background: $primary-color;
+      color: $white-color;
+      padding: 2rem 4rem;
+      text-align: center;
+    }
+
+    .group__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 0 1rem;
+
+      .group__heading {
+        padding: 1rem 2rem;
+        border: 1px solid rgba($black-color, 0.8);
+        border-radius: 8px;
+        box-shadow: $box-shadow;
+        color: $black-color;
+        text-align: center;
+        font-size: 1.5rem;
+      }
+
+      .group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .items__group {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          .item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            input {
+              padding: 0.5rem;
+              border-radius: 6px;
+              background: $white-color;
+              box-shadow: $box-shadow;
+              outline: none;
+              border: 1px solid rgba($black-color, 0.8);
+              font-family: "Space Grotesk", sans-serif;
+              font-weight: bold;
+              color: $black-color;
+              font-size: 1rem;
+              text-align: center;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+
+    .backup {
+      margin-top: 1rem;
+      gap: 1.5rem;
+    }
+
+    #restore-backup {
+      outline: none;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #settings {
+    input {
+      max-width: 4rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #settings {
+    .item {
+      flex-direction: column !important;
+      gap: 0.5rem;
+
+      .input__group {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        .divide__colon {
+          padding: 0.2rem;
+          font-size: 1.5rem;
+        }
+      }
+      input {
+        max-width: 10rem;
+        width: 10rem !important;
+      }
+    }
+  }
+}
