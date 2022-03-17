@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
   openSettings.forEach((btn) => {
     btn.addEventListener("click", function () {
       settings.style.display = "flex";
-      buttons.style.display = "none";
     });
   });
 });
