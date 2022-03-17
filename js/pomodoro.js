@@ -2,7 +2,7 @@ import onToggleMode from "./mode";
 import { notification } from "./notification";
 import modifyButton from "./utils/modifyButton";
 import { time } from "./utils/time";
-import trailZero from "./utils/trailZero";
+import { trailZero } from "./utils/trailZero";
 
 // Select DOM
 const timeMinutes = document.querySelector("#time-minutes");

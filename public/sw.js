@@ -10,7 +10,7 @@ workbox.routing.registerRoute(
       new workbox.cacheableResponse.CacheableResponsePlugin({
         statuses: [0, 200],
       }),
-      new workbox.strategies.ExpirationPlugin({
+      new workbox.expiration.ExpirationPlugin({
         maxEntries: 60,
         maxAgeSeconds: 7 * 24 * 60 * 60,
       }),
@@ -23,16 +23,16 @@ workbox.routing.registerRoute(
     url.origin === "https://fonts.googleapis.com" ||
     url.origin === "https://fonts.gstatic.com",
 
-  new StateWhileRevalidate({
+  new workbox.strategies.StaleWhileRevalidate({
     cacheName: "google-fonts",
-    plugins: [new ExpirationPlugin({ maxEntries: 20 })],
+    plugins: [new workbox.expiration.ExpirationPlugin({ maxEntries: 20 })],
   })
 );
 
 workbox.routing.registerRoute(
   ({ request }) =>
     request.destination === "script" || request.destination === "style",
-  new StateWhileRevalidate()
+  new workbox.strategies.StaleWhileRevalidate()
 );
 
 self.addEventListener("install", function (event) {

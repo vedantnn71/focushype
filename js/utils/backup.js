@@ -1,3 +1,6 @@
+import { pomodoro } from "../pomodoro";
+import { initializeSettingsUI } from "../settings";
+import { setTime } from "./time";
 
 function json() {
   const storageData = {
@@ -35,15 +38,22 @@ function changeStorage(data) {
 }
 
 function restoreBackup(eve) {
+  if (eve.target.files[0].type !== "application/json") {
+    ("Invalid backup file.");
+    return;
+  }
+
   const file = eve.target.files[0];
   const reader = new FileReader();
   let output;
 
   reader.onload = function (e) {
-    output = e.target.result;
-    changeStorage(JSON.parse(output));
+    output = JSON.parse(e.target.result);
+    changeStorage(output);
+    setTime(output.timeMinutes, output.timeSeconds);
 
-    console.log(JSON.parse(output));
+    pomodoro.showInitialTime();
+    initializeSettingsUI();
   };
 
   reader.readAsText(file);

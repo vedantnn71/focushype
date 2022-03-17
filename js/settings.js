@@ -1,5 +1,7 @@
-import trailZero from "./utils/trailZero";
+import { pomodoro } from "./pomodoro";
 import onElementChange from "./utils/onElementChange";
+import { setTime } from "./utils/time";
+import { trailZero, untrailZero } from "./utils/trailZero";
 
 const settingsPomodoroMinutes = document.querySelector(
   "#pomodoro-settings-minutes"
@@ -39,6 +41,17 @@ function initializeSettingsUI() {
 function updateStorage() {
   onElementChange(settingsPomodoroMinutes, function () {
     localStorage.setItem("time-minutes", settingsPomodoroMinutes.value);
+
+    // Update main pomodoro UI
+    setTime(
+      untrailZero(settingsPomodoroMinutes.value),
+      untrailZero(settingsPomodoroSeconds.value)
+    );
+    console.log(
+      untrailZero(settingsPomodoroMinutes.value),
+      untrailZero(settingsPomodoroSeconds.value)
+    );
+    pomodoro.showInitialTime();
   });
 
   onElementChange(settingsPomodoroSeconds, function () {
