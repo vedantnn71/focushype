@@ -81,6 +81,11 @@ closeSettings.addEventListener("click", function () {
   settings.style.display = "none";
 });
 
+window.addEventListener("storage", function () {
+  pomodoro.showInitialTime();
+  initSettings();
+});
+
 // Notification
 if (
   localStorage.getItem("ask-notification") === "true" &&
