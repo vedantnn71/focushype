@@ -112,7 +112,8 @@ button:disabled {
 
 @media screen and (min-width: 768px) {
   .buttons {
-    .follow {
+    .follow,
+    .settings-open {
       display: none !important;
     }
   }
