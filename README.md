@@ -6,6 +6,12 @@ Skyrocket your focus with this ultimate pomodoro timer tool  🚀
 
 ## Links
 [Try it out](https://focushype.software)
+
+
 [Support on product hunt](https://www.producthunt.com/posts/focushype)
+
+
 [Spread the word on twitter](https://twitter.com/intent/tweet?text=Skyrocket%20your%20productivity%20with%20Focushype%20https://focushype.software)
+
+
 [Support me on patreon](https://www.patreon.com/vedantnn7)
