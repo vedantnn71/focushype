@@ -41,7 +41,7 @@
         border: 1px solid rgba($black-color, 0.8);
         border-radius: 8px;
         box-shadow: $box-shadow;
-        color: $black-color;
+        color: rgba($black-color, 0.9);
         text-align: center;
         font-size: 1.5rem;
       }
@@ -63,6 +63,10 @@
             justify-content: space-between;
             align-items: center;
 
+            .item__heading {
+              color: rgba($black-color, 0.85);
+            }
+
             input {
               padding: 0.5rem;
               border-radius: 6px;
@@ -72,7 +76,7 @@
               border: 1px solid rgba($black-color, 0.8);
               font-family: "Space Grotesk", sans-serif;
               font-weight: bold;
-              color: $black-color;
+              color: rgba($black-color, 0.85);
               font-size: 1rem;
               text-align: center;
               align-items: center;
@@ -104,6 +108,10 @@
 
 @media screen and (max-width: 768px) {
   #settings {
+    .popup__content {
+      max-width: 80%;
+    }
+
     .item {
       flex-direction: column !important;
       gap: 0.5rem;
