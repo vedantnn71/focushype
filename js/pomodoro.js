@@ -47,6 +47,7 @@ const pomodoro = {
   time: null,
   interval: null,
   stoppedTime: null,
+
   start() {
     this.time = time.minutes * 60 + time.seconds;
     let timeDuration = this.time;
@@ -96,15 +97,18 @@ const pomodoro = {
       timeDuration -= 1;
     }
   },
+
   stop() {
     this.stoppedTime = +timeMinutes.innerText * 60 + +timeSeconds.innerText;
     clearInterval(this.interval);
   },
+
   delete() {
     clearInterval(this.interval);
     this.time = time.minutes * 60 + time.seconds;
     this.showInitialTime();
   },
+
   showInitialTime() {
     timeMinutes.innerText = trailZero(time.minutes);
     timeSeconds.innerText = trailZero(time.seconds);
